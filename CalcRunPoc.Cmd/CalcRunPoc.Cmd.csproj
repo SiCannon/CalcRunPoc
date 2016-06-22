@@ -43,14 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audits\FrancePubPer.cs" />
     <Compile Include="Model\AuditResult.cs" />
     <Compile Include="Model\AuditStream.cs" />
     <Compile Include="Model\Calculation.cs" />
     <Compile Include="Model\Contract.cs" />
-    <Compile Include="Model\Right.cs" />
     <Compile Include="Model\Rule.cs" />
-    <Compile Include="Model\Source.cs" />
-    <Compile Include="Model\Territory.cs" />
+    <Compile Include="Model\SourceData.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

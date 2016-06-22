@@ -4,12 +4,6 @@ namespace CalcRunPoc.Cmd.Model
 {
     class AuditStream
     {
-        public List<Contract> Contracts { get; set; }
-
-
-        public AuditStream()
-        {
-            Contracts = new List<Contract>();
-        }
+        public List<Contract> Contracts { get; set; } = new List<Contract>();
     }
 }

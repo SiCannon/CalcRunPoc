@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CalcRunPoc.Cmd.Audits;
 using CalcRunPoc.Cmd.Model;
 
 namespace CalcRunPoc.Cmd
@@ -7,29 +8,46 @@ namespace CalcRunPoc.Cmd
     {
         static void Main(string[] args)
         {
-            var collect = new AuditStream();
+            var auditStream = FrancePubPer.Create();
 
-            var sacem = new Contract
+            var sourceData = new SourceData();
+            foreach (var transaction in sourceData.Transactions)
             {
-                Rules = new List<Rule>
-                {
-                    new Rule("France", null, "Box Office", 2.0m),
-                    new Rule("France", null, "Transmissions", 3.0m)
-                }
+
+            }
+        }
+
+        static void AuditByTerritoryAndSource()
+        {
+            var territories = new List<string> { "France", "Austria", "Germany", "Italy" };
+
+            var sources = new List<SourceData>
+            {
+                new SourceData { Source = "Box Office" },
+                new SourceData { Source = "Transmissions" },
             };
 
-            collect.Contracts.Add(sacem);
+            var calc = new Calculation();
 
-            var subpub = new Contract
+            foreach (var territory in territories)
             {
-                Rules = new List<Rule>
+                foreach (var source in sources)
                 {
-                    new Rule("France", null, "Box Office", 2.0m),
-                    new Rule("France", null, "Box Office", 2.0m),
-                }
-            };
+                    var results = new List<AuditResult>();
 
-            collect.Contracts.Add(subpub);
+                    foreach (var transaction in source.Transactions)
+                    {
+                        results.Add(calc.AuditTransaction(transaction));
+                    }
+
+                    PostResults(results);
+                }
+            }
+        }
+
+        static void PostResults(object results)
+        {
+            // store the results?
         }
     }
 }
