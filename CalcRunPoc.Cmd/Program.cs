@@ -18,9 +18,18 @@ namespace CalcRunPoc.Cmd
                 }
             };
 
+            collect.Contracts.Add(sacem);
 
+            var subpub = new Contract
+            {
+                Rules = new List<Rule>
+                {
+                    new Rule("France", null, "Box Office", 2.0m),
+                    new Rule("France", null, "Box Office", 2.0m),
+                }
+            };
 
-            collect.Contracts.Add(new Contract { });
+            collect.Contracts.Add(subpub);
         }
     }
 }
